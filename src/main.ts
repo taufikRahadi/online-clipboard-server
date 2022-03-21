@@ -14,6 +14,10 @@ async function bootstrap() {
     new FastifyAdapter(),
   )
 
+  app.enableCors({
+    origin: '*',
+  })
+
   const configService = app.get<ConfigService>(ConfigService)
 
   const port = configService.get<number>('APP_PORT') ?? 8080
